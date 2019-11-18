@@ -10,15 +10,45 @@
 </head>
 
 <body>
-    <div id="app" :title="msg">{{message}}</div>
+    <div id="app" :title="obj.msg">
+        <div v-for="(item ,propName,index) in obj">{{index}}--{{propName}}:{{item}}</div>
+        <button @click='click("name",$event)'>点击</button>
+        <div @click.meta='dosomething'>dosomething</div>
+    </div>
 </body>
 <script>;
     const app = new Vue({
         el: '#app',
         data: {
-            message: 'app',
-            msg:'this is a info!'
-        }
+            obj: {
+                message: 'apqp',
+                msg: 'this is a info!',
+                color: 'red',
+            }
+        },
+        computed: {
+            reverseMessage: function () {
+                return this.message.split('').reverse().join('');
+            },
+            now: function () {
+                return new Date(Date.now()).toLocaleString();
+            }
+        },
+        methods: {
+            click: function (name, evt) {
+                console.log(name, 'name');
+
+                if (evt) {
+                    console.log(evt.target.tagName, 'evt');
+
+                }
+            },
+            dosomething: function (evt) {
+                console.log(evt, 'evt');
+
+            }
+        },
+
     })
 </script>
 
