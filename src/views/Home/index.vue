@@ -1,9 +1,19 @@
 <template>
-  <div>this is a page home</div>
+  <div>
+    <h1>this is a page home</h1>
+    <router-link :to="{path:'/user/123'}">Go User123</router-link>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  filters: {},
+  data() {
+    return {};
+  },
+  created() {},
+  methods: {}
+};
 </script>
 
 <style lang="scss" scoped>

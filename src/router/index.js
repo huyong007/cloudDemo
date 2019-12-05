@@ -3,15 +3,15 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-import PageHome from "../views/Home/index.vue";
-import PageAbout from "../views/About/index.vue";
-
 const router = new VueRouter({
-  mode:'history',
+  mode: "history",
   routes: [
-    { path: "/", component: PageHome },
-    { path: "/about", component: PageAbout },
-    
+    { path: "/", component: () => import("@/views/Home/index") },
+    { path: "/about", component: () => import("@/views/About/index") },
+    { 
+      path: "/user/:userId", 
+    name:'user',
+    component: () => import("@/views/Users/index") }
   ]
 });
 
