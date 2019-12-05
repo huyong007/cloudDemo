@@ -1,23 +1,23 @@
 <template>
   <div id="app">
-    <HelloWorld msg="test vuex."/>
+    <h1>test vue router</h1>
+    <main>
+      <router-view></router-view>
+    </main>
+    <p>Page footer</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  name: "app",
+  components: {},
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
