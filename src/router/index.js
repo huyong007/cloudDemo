@@ -49,7 +49,7 @@ const router = new VueRouter({
   ]
 });
 router.afterEach(to => {
-  document.title = to.meta.title;
+  document.title = to.meta.title || 'demo';
 });
 
 export default router;
