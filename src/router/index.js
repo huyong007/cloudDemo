@@ -6,16 +6,27 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "/", component: () => import("@/views/Home/index") },
+    {
+      path: "/",
+      component: () => import("@/views/Home/index"),
+      name: "home",
+      meta: {
+        title: "welcome to my home!"
+      }
+    },
     { path: "/about", component: () => import("@/views/About/index") },
     {
       path: "/user/:userId",
       name: "user",
-      component: () => import("@/views/Users/index")
+      component: () => import("@/views/Users/index"),
+      beforeEnter(to, from, next) {
+        console.log(to, from, next(), "to,from,next");
+        next();
+      }
     },
     {
       path: "/settings",
-      redirect:"/about",
+      redirect: "/about",
       component: () => import("@/views/Settings/index"),
       children: [
         {
@@ -27,8 +38,18 @@ const router = new VueRouter({
           component: () => import("@/views/Settings/components/email")
         }
       ]
+    },
+    {
+      path: "*",
+      component: () => import("@/views/PageNotFound/index"),
+      meta: {
+        title: "welcome to my 404!"
+      }
     }
   ]
+});
+router.afterEach(to => {
+  document.title = to.meta.title;
 });
 
 export default router;

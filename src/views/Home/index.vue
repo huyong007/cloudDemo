@@ -13,15 +13,8 @@ export default {
     return {};
   },
   created() {
-    this.arrayToHtmlList(["item 1", "item 2"], "myListID");
   },
   methods: {
-    arrayToHtmlList(arr, listID) {
-      (el => (
-        (el = document.querySelector("#" + listID)),
-        (el.innerHtml += arr.map(item => `<li>${item}</li>`).join(""))
-      ))();
-    }
   }
 };
 </script>

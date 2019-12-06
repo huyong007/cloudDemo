@@ -7,9 +7,18 @@
       <h2>etc....</h2>
     </div>
     <div>
-      <router-link :to="{path:'/user/123'}" tag='li' active-class='active'><a>Go User123</a></router-link>
+      <router-link :to="{path:'/user/123'}" tag="li" active-class="active">
+        <a>Go User123</a>
+      </router-link>
     </div>
-    <router-link :to="{path:'/user/456'}" tag='li' active-class='active'><a>Go User456</a></router-link>
+    <div>
+      <router-link :to="{path:'/user/456'}" tag="li" active-class="active">
+        <a>Go User456</a>
+      </router-link>
+    </div>
+    <div>
+      <button @click="goTohome">goTohome</button>
+    </div>
   </div>
 </template>
 
@@ -34,6 +43,9 @@ export default {
         this.userInfo = { user: "admain" };
         this.state = void 0;
       }, 2000);
+    },
+    goTohome() {
+      this.$router.replace({ name: "home" });
     }
   }
 };
